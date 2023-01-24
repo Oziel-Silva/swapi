@@ -33,7 +33,7 @@ def get_results():
     final_results = {}
     MGLT = 1000000
     parameter = 720
-    paradas = []
+    stops = []
     for result in json_data["results"]:
         
         response = requests.get(result["url"])
@@ -42,33 +42,33 @@ def get_results():
         if data["result"]["properties"]["MGLT"] == "unknown":
             final_results [data["result"]["properties"]["name"]] = "unknown"
             continue
-        n_paradas = MGLT/int(data["result"]["properties"]["MGLT"])
+        n_stops = MGLT/int(data["result"]["properties"]["MGLT"])
         match = re.search("year|month|week|day", data["result"]["properties"]["consumables"])
         if match != None:
             if match.group() == "year":
                 n_year = int(match.string[0:match.regs[0][0]])
                 parameter = 8640 * n_year
-                n_paradas = n_paradas/parameter
-                n_paradas = math.floor(n_paradas)
-                final_results [data["result"]["properties"]["name"]] = n_paradas
+                n_stops = n_stops/parameter
+                n_stops = math.floor(n_stops)
+                final_results [data["result"]["properties"]["name"]] = n_stops
             elif match.group() == "month":
                 n_month = int(match.string[0:match.regs[0][0]])
                 parameter = 720 * n_month
-                n_paradas = n_paradas/parameter
-                n_paradas = math.floor(n_paradas)
-                final_results [data["result"]["properties"]["name"]] = n_paradas
+                n_stops = n_stops/parameter
+                n_stops = math.floor(n_stops)
+                final_results [data["result"]["properties"]["name"]] = n_stops
             elif match.group() == "week":
                 n_week = int(match.string[0:match.regs[0][0]])
                 parameter = 168 * n_week
-                n_paradas = n_paradas/parameter
-                n_paradas = math.floor(n_paradas)
-                final_results [data["result"]["properties"]["name"]] = n_paradas
+                n_stops = n_stops/parameter
+                n_stops = math.floor(n_stops)
+                final_results [data["result"]["properties"]["name"]] = n_stops
             elif match.group() == "day":
                 n_day = int(match.string[0:match.regs[0][0]])
                 parameter = 24 * n_day
-                n_paradas = n_paradas/parameter
-                n_paradas = math.floor(n_paradas)
-                final_results [data["result"]["properties"]["name"]] = n_paradas
+                n_stops = n_stops/parameter
+                n_stops = math.floor(n_stops)
+                final_results [data["result"]["properties"]["name"]] = n_stops
             else:
                 continue
     return final_results
