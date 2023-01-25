@@ -28,18 +28,20 @@ to create a virtual-env
 
 to install dependencies, use:
 ```
-(env)$ pip3 install -r requirement.txt
+(env)$ pip3 install -r requirements.txt
 ````
 
 Now, let's run using:
 ```
-(env)$ python hello.py
+(env)$ python app.py
 ```
 
 On the web browser let's put on the url:
 ```
 http://127.0.0.1:8080
 ```
+wait for fell seconds...
+
 In order to alter the MGLT value we need parse it on the url, for exemple:
 ```
 http://127.0.0.1:8080?MGLT=500000
