@@ -42,7 +42,7 @@ http://127.0.0.1:8080
 ```
 wait for fell seconds...
 
-In order to alter the MGLT value we need parse it on the url, for exemple:
+In order to alter the MGLT value we need put it on the url, for exemple:
 ```
 http://127.0.0.1:8080?MGLT=500000
 ````
